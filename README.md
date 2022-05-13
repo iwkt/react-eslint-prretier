@@ -12,6 +12,9 @@ prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-react
 extends に”plugin:pretteir/recommended”を追加した。
 参照元：https://dackdive.hateblo.jp/entry/2019/03/15/100000
 
+この後もエラーが発生する時は、
+package.json を開きコマンド＋ S で save すると復帰する。なぜかよくわからない？
+
 ## 整形されるファイル
 
 App.jsx などのコンポーネントの拡張子は js から jsx にすることで保存時に整形される。
