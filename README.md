@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+VS Code で create-react-app を使用して eslint、prettier の設定をしたプロジェクト。VS Code と連携することでターミナルからコマンド入力をすることなしに eslint と prettier はの機能を使うことができる。
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# プロジェクト作成とパッケージの追加について
 
-## Available Scripts
+create-react-app を使用してプロジェクト作成。この時点で eslint はインストールされているので
+下記パッケージをインストールした。
+prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-react
 
-In the project directory, you can run:
+## Error: "prettier/react" has been merged into "prettier" in eslint-config-prettier 8.0.0 　の回避
 
-### `npm start`
+このままだとエラーが発生するので
+extends に”plugin:pretteir/recommended”を追加した。
+参照元：https://dackdive.hateblo.jp/entry/2019/03/15/100000
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 整形されるファイル
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+App.jsx などのコンポーネントの拡張子は js から jsx にすることで保存時に整形される。
 
-### `npm test`
+# 使用方法
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## プロジェクトをクローン
 
-### `npm run build`
+```
+git clone https://github.com/iwkt/react-test.git
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+cd react-test
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
 
-### `npm run eject`
+## VS Code に ESLint の拡張機能の追加
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Vscode で Eslint を使えるように拡張機能をインストールする。 ググったらすぐにでます。
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Vscode の設定を変更
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+ディレクトリ.VSCODE にある settins.json を エディター VS CODE の settins.json にコピペする。
+VS CODE の settins.json 設定へは CODE > 基本設定 > 設定とたどる。
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+#settings.json
+{
+  "javascript.format.enable": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
+}
+```
 
-## Learn More
+#　ローカルサーバー起動
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+npm start
+```
