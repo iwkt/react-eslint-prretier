@@ -9,15 +9,37 @@ prettier eslint-config-prettier eslint-plugin-prettier eslint-plugin-react
 ## Error: "prettier/react" has been merged into "prettier" in eslint-config-prettier 8.0.0 　の回避
 
 このままだとエラーが発生するので
-extends に”plugin:pretteir/recommended”を追加した。
-参照元：https://dackdive.hateblo.jp/entry/2019/03/15/100000
+~~extends に”plugin:pretteir/recommended”を追加した。~~
+~~参照元：https://dackdive.hateblo.jp/entry/2019/03/15/100000 ~~
 
-この後もエラーが発生する時は、
-package.json を開きコマンド＋ S で save すると復帰する。なぜかよくわからない？
+extends の”plugin:pretteir/recommended”を削除して、prettier とした。
+
+```
+ {
+   "extends": [
+   "eslint:recommended",
+   "plugin:react/recommended",
+   // "prettier/react",
+   "prettier"
+   ],
+ }
+```
 
 ## 整形されるファイル
 
 App.jsx などのコンポーネントの拡張子は js から jsx にすることで保存時に整形される。
+
+## 回避できないエラー
+
+ERROR in Failed to load parser 'babel-eslint' declared in 'src/.eslintrc.js': Cannot find module 'babel-eslint'
+
+これを回避しようと babel-eslint を下記コマンドでインストールすると
+
+```
+npm install eslint babel-eslint --save-dev
+```
+
+逆にさらなるエラーが発生する。現状では修正法がわからない！！
 
 # 使用方法
 
