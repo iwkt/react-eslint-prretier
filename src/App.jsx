@@ -17,7 +17,4 @@ function App() {
   );
 }
 
-const a = 'riact';
-const b = ['ria'];
-
 export default App;
